@@ -3,7 +3,7 @@
 
 ### TODO ###
 
-file_name = 'https://github.com/ZhaZhaFon/ScoringRanking/files/10576799/results-20230131.xlsx'
+file_name = 'https://github.com/ZhaZhaFon/ScoringBond/files/10694112/bond-20230131.xlsx'
 
 ### TODO ###
 
@@ -23,7 +23,7 @@ st.title("基金量化评分 - 主动权益基金")
 # 数据
 #'''
 st.write("`#` 数据加载(约5s)...")
-ranking = pd.read_excel(file_name, index_col=0).reset_index().rename(columns={"index": "基金代码"})
+ranking = pd.read_excel(fsile_name, index_col=0).reset_index().rename(columns={"index": "基金代码"})
 options_df = pd.DataFrame()
 options_df['选项卡'] = ranking['基金代码'] + ' ' + ranking['基金简称']
 options_tuple = tuple(options_df['选项卡'].tolist())
