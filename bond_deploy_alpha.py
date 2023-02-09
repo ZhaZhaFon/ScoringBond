@@ -18,12 +18,12 @@ import streamlit_echarts
 # 标题
 
 st.set_page_config(layout="centered", page_icon="🎓", page_title="")
-st.title("基金量化评分 - 主动权益基金")
+st.title("基金量化评分 - 债券型基金")
 
 # 数据
 #'''
 st.write("`#` 数据加载(约5s)...")
-ranking = pd.read_excel(fsile_name, index_col=0).reset_index().rename(columns={"index": "基金代码"})
+ranking = pd.read_excel(file_name, index_col=0).reset_index().rename(columns={"index": "基金代码"})
 options_df = pd.DataFrame()
 options_df['选项卡'] = ranking['基金代码'] + ' ' + ranking['基金简称']
 options_tuple = tuple(options_df['选项卡'].tolist())
@@ -167,7 +167,7 @@ left, right = st.columns(2)
 left.write("##### 【基金池】")
 form_left = left.form("template_form")
 ans = form_left.selectbox(
-    label="主动权益基金",
+    label="债券型基金",
     options=options_tuple,
 )
 
@@ -244,5 +244,5 @@ st.dataframe(ranking)
 # 备注
 
 st.write("- 数据来源: Wind")
-st.write("- 主动权益基金: Wind二级投资类型下的普通股票型、偏股混合型、平衡混合型、灵活配置型基金")
-st.write("- 基金池: 仅考虑现任基金经理任职>2年、最新规模>=2亿元、过去9期平均权益仓位不低于60%的初始基金(A份额)作为样本")
+st.write("- 债券型基金: Wind二级投资类型下的短期纯债型、中长期纯债型、偏债混合型、混合债券型一级基金、混合债券型二级基金")
+st.write("- 基金池: 仅考虑现任基金经理任职>2年、最新规模>=2亿元、过去9期平均债券仓位不低于60%的初始基金(A份额)作为样本")
